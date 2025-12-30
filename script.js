@@ -12,7 +12,27 @@ function randomCheck() {
     story.innerText = "😰 喔不，你好像沒有讀懂內容。\n你要再試著讀一次嗎？";
     btn1.innerText = "✅ 再讀一次";
     btn2.innerText = "❌ 不讀了";
-    state = "retry";
+
+    btn1.onclick = function () {
+      story.innerText = "你決定再試著讀一次，希望這次能更懂。";
+      btn1.innerText = "📖 繼續讀";
+      btn2.innerText = "😵 放棄";
+
+      btn1.onclick = function () {
+        story.innerText = "你繼續認真讀書...";
+        btn1.innerText = "☕ 再繼續";
+        btn2.innerText = "😵 放棄";
+        state = "study";
+      };
+      btn2.onclick = function () {
+        showEnding("bad");
+      };
+      state = "study";
+    };
+    btn2.onclick = function () {
+      showEnding("bad");
+    };
+    statr = "retry";
   }
 }
 
@@ -44,6 +64,15 @@ btn1.onclick = function () {
       btn2.innerText = "😵 放棄";
       state = "study";
     };
+    btn2.onclick = function () {
+      showEnding("bad");
+    };
+    state = "retry";
+  } else if (state === "phone") {
+    story.innerText = "你決定趕快讀書，希望來得及。";
+    btn1.innerText = "☕ 繼續讀";
+    btn2.innerText = "😵 放棄";
+    state = "study";
   } else if (state === "end") {
     showEnding("bad");
   }
@@ -57,8 +86,6 @@ btn2.onclick = function () {
     btn2.innerText = "( ꩜ ᯅ ꩜;)⁭ ⁭明天再說";
     state = "phone";
   } else if (state === "phone") {
-    showEnding("bad");
-  } else if (state === "retry") {
     showEnding("bad");
   }
 };
