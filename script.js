@@ -87,6 +87,10 @@ btn2.onclick = function () {
     state = "phone";
   } else if (state === "phone") {
     showEnding("bad");
+  }  else if (state === "study") {
+    showEnding("bad")
+  } else if (state === "retry") {
+    shoEnding("bad");
   }
 };
 
